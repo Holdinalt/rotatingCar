@@ -14,6 +14,7 @@ class RotatingCar{
         rightButton
     }) {
         this.urls = _urls
+        this.cachePicks()
         this.displayIndex = displayIndexStart
         this.templateSource = _templateSource;
         this.displayUrl = _urls[this.displayIndex]
@@ -37,19 +38,33 @@ class RotatingCar{
 
     renderPicture = () => {
         this.templateSource.src = 'https://drive.google.com/uc?export=download&id=' + this.displayUrl
-        'https://drive.google.com/uc?export=view&id='
+    }
+
+    cachedPicks = []
+
+    cachePicks = () => {
+        for (const url of this.urls){
+
+            let img = document.createElement('img');
+            img.src = 'https://drive.google.com/uc?export=download&id=' + url;
+
+            this.cachedPicks[url] = img
+        }
+
+        console.log(this.cachedPicks)
     }
 }
 const urls = [
-    '1ECe0MyxrqBTIUNTp0t8_gQ2Ids79z6MP',
-    '15Cgx8PsGZaBAIjDok0CsudxwJgRC_XEx',
-    '1gqrtA5SxTfwF55LFsgOyzlJq5Go6G7PL',
-    '1ynEDYcW3rSuLXvpAlQZ4WpVAUl_XZT2x',
-    '1mJmgRy5BR-1Xcde3-YXdY21G9ozyGLCC',
-    '1AtpNsjKxxoNgLbpUFNHZVhxRein_Q6NL',
-    '1g4MQRpt__vZP4T_YHETLJOnnZA2c5IQC',
-    '1GLnVRccdRNgQD1UMOdiHKPLSiqgK2zRX',
+    '1AuLxNG4lqJkK4BX3QVr66K1Sp9gF1f3z',
+    '1rZuUFov76KP_9HpZWtonPgYC_VHPGX7W',
+    '10ORcMjPIKKPhL97LArpo14zZbHGG22yP',
+    '1jQh4DpBq4F2Nl6mAOkbTeD4IeT4XtTOO',
+    '1iurf79bgqsVvhbQfhFBOQ2Ll3LFK9HkR',
+    '1C23pw74QBcBGxg6R29fCX-wjftKt24rD',
+    '1NrIm9zKZXpIKPNtIP85RRGF1-6eVxiXC',
+    '1c3Nn0rKnXnTsSy-yv9waz00GeEQhLTKA',
 ]
+
 
 
 const elem = document.getElementById('car')
