@@ -7,7 +7,8 @@ class RotatingCar{
 
     constructor({
         _urls,
-        _templateSource
+        _templateSource,
+        _rotateSegments = 20
     }) {
         this.urls = _urls
 
@@ -15,7 +16,7 @@ class RotatingCar{
         this.setupIMGS()
         this.controlRender(0)
 
-        this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / 20)
+        this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / _rotateSegments)
 
         this.initialiseTemplateSource()
     }
@@ -110,6 +111,8 @@ class RotatingCar{
 
     startRotateTouch = (event) => {
 
+        event.preventDefault()
+
         document.addEventListener('touchend', this.endRotateTouch)
         this.templateSource.addEventListener('touchmove', this.rotate)
 
@@ -151,5 +154,6 @@ const elem = document.getElementById('carTemplate')
 
 const rotatingCar = new RotatingCar({
     _urls: urls,
-    _templateSource: elem
+    _templateSource: elem,
+    _rotateSegments: 20
 })
