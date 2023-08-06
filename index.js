@@ -1,6 +1,6 @@
 class RotatingCar{
 
-    ROTATE_TO_SWITCH_PX = 7;
+    ROTATE_TO_SWITCH_PX;
 
     urls = []
     templateSource;
@@ -14,6 +14,7 @@ class RotatingCar{
 
         this.templateSource = _templateSource;
         this.setupIMGS()
+        this.cacheCursors()
         this.controlRender(0)
 
         this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / _rotateSegments)
@@ -43,18 +44,16 @@ class RotatingCar{
     notHiddenIndex = 0;
 
     renderPictureByIndex = (index) => {
-
         this.IMGs[index].style.visibility = 'visible'
 
         if(index !== this.notHiddenIndex){
             this.IMGs[this.notHiddenIndex].style.visibility = 'hidden'
             this.notHiddenIndex = index
         }
-
-
     }
 
     indexEnd = 0;
+    prevX;
 
     controlRender = (num) => {
 
@@ -63,11 +62,13 @@ class RotatingCar{
         // console.log(this.indexNow, 'now')
 
         if( num <= 0 ){
+
             renderIndex = this.indexNow + num >= 0
                 ? this.indexNow + num
                 : (((this.indexNow + num) % this.urls.length) + this.urls.length) % this.urls.length
             // console.log('left')
         } else {
+
             renderIndex = (this.indexNow + num) % this.urls.length
             // console.log('right')
         }
@@ -89,11 +90,11 @@ class RotatingCar{
 
     startRotate = (event) => {
 
+        this.setCursor('neutral')
+
         document.addEventListener('mouseup', this.endRotate)
 
         this.templateSource.addEventListener('mousemove', this.rotate)
-
-
 
         this.startedPos = event.screenX;
         // console.log(this.startedPos)
@@ -104,6 +105,7 @@ class RotatingCar{
         document.removeEventListener('mouseup', this.endRotate)
         this.templateSource.removeEventListener('mousemove', this.rotate)
 
+        this.setCursor('default')
 
         this.indexNow = this.indexEnd
         // console.log('отжал')
@@ -112,6 +114,8 @@ class RotatingCar{
     startRotateTouch = (event) => {
 
         event.preventDefault()
+
+        this.setCursor('neutral')
 
         document.addEventListener('touchend', this.endRotateTouch)
         this.templateSource.addEventListener('touchmove', e => this.rotate(e, true))
@@ -122,6 +126,8 @@ class RotatingCar{
     endRotateTouch = (event) => {
         document.removeEventListener('touchend', this.endRotateTouch)
         this.templateSource.removeEventListener('touchmove', e => this.rotate(e, true))
+
+        this.setCursor('default')
 
         this.indexNow = this.indexEnd
     }
@@ -136,11 +142,59 @@ class RotatingCar{
             posX = Math.floor(event.changedTouches[0].clientX);
         }
 
+        if(this.prevX > posX){
+            this.setCursor('left')
+        }
+
+        if(this.prevX < posX) {
+            this.setCursor('right')
+        }
+
+        this.prevX = posX
+
         const diff = this.startedPos - posX;
         const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
 
         // console.log(rotates, 'rotates')
         this.controlRender(rotates)
+
+    }
+
+    cursors = {
+        right: 'https://drive.google.com/uc?export=download&id=1BYdpC_UlUju6GqcTysALFBIPXxwugrlB',
+        left: 'https://drive.google.com/uc?export=download&id=1fU1u-TpdzSrwKuxq_rKI1SNJ0XthRtJI',
+        neutral: 'https://drive.google.com/uc?export=download&id=1oOn2G_2XstKSU3NYaZO-X-vtkx1LfSjg'
+    }
+
+    cacheCursors = () => {
+        for (const curs in this.cursors){
+
+            const img = document.createElement('img')
+
+            img.width = 0;
+            img.draggable = false;
+            img.src = this.cursors[curs]
+            img.style.position = 'absolute'
+            img.style.visibility = 'hidden'
+
+            this.templateSource.append(img)
+        }
+    }
+
+    setCursor = (type) => {
+
+        let newCursor;
+
+        switch (type){
+            case 'right': newCursor = `url("${this.cursors.right}"), auto`; break;
+            case 'left': newCursor = `url("${this.cursors.left}"), auto`; break;
+            case 'neutral': newCursor = `url("${this.cursors.neutral}"), auto`; break;
+            case 'default': newCursor = 'auto'; break;
+        }
+
+        console.log(type, newCursor)
+
+        this.templateSource.style.cursor = newCursor
 
     }
 }
