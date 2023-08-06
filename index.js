@@ -114,21 +114,28 @@ class RotatingCar{
         event.preventDefault()
 
         document.addEventListener('touchend', this.endRotateTouch)
-        this.templateSource.addEventListener('touchmove', this.rotate)
+        this.templateSource.addEventListener('touchmove', e => this.rotate(e, true))
 
         this.startedPos = Math.floor(event.changedTouches[0].clientX);
     }
 
     endRotateTouch = (event) => {
         document.removeEventListener('touchend', this.endRotateTouch)
-        this.templateSource.removeEventListener('touchmove', this.rotate)
+        this.templateSource.removeEventListener('touchmove', e => this.rotate(e, true))
 
         this.indexNow = this.indexEnd
     }
 
-    rotate = (event) => {
+    rotate = (event, touch = false) => {
 
-        const posX = Math.floor(event.changedTouches[0].clientX);
+        let posX
+
+        if(!touch){
+            posX = event.clientX;
+        } else {
+            posX = Math.floor(event.changedTouches[0].clientX);
+        }
+
         const diff = this.startedPos - posX;
         const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
 
