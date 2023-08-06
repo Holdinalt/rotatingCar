@@ -90,6 +90,8 @@ class RotatingCar{
 
     startRotate = (event) => {
 
+        event.preventDefault()
+
         this.setCursor('neutral')
 
         document.addEventListener('mouseup', this.endRotate)
