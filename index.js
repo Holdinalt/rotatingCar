@@ -83,16 +83,17 @@ class RotatingCar{
     controlRender = (num) => {
 
         let renderIndex;
-        console.log(num)
+
+        console.log(this.indexNow, 'now')
 
         if( num <= 0 ){
             renderIndex = this.indexNow + num >= 0
                 ? this.indexNow + num
-                : this.urls.length + (num % this.urls.length - 1)
+                : (((this.indexNow + num) % this.urls.length) + this.urls.length) % this.urls.length
+            console.log('left')
         } else {
-            renderIndex = this.indexNow + num <= this.urls.length - 1
-                ? this.indexNow + num
-                : num % (this.urls.length - 1)
+            renderIndex = (this.indexNow + num) % this.urls.length
+            console.log('right')
         }
 
         console.log(renderIndex, 'index')
