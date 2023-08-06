@@ -1,5 +1,7 @@
 class RotatingCar{
 
+    ROTATE_TO_SWITCH_PX = 7;
+
     displayUrl = ''
     displayIndex = 0
     urls = []
@@ -14,44 +16,127 @@ class RotatingCar{
         rightButton
     }) {
         this.urls = _urls
-        this.cachePicks()
-        this.displayIndex = displayIndexStart
+        // this.cachePicks()
         this.templateSource = _templateSource;
+        this.setupIMGS()
+        this.controlRender(0)
+
+        this.displayIndex = displayIndexStart
         this.displayUrl = _urls[this.displayIndex]
-        this.renderPicture()
 
-        leftButton.addEventListener('click', this.rotateLeft)
-        rightButton.addEventListener('click', this.rotateRight)
+        this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / 20)
+
+
+        this.initialiseTemplateSource()
+
+        // leftButton.addEventListener('click', this.rotateLeft)
+        // rightButton.addEventListener('click', this.rotateRight)
     }
 
-    rotateLeft = () => {
-        this.displayIndex = this.displayIndex - 1 >= 0 ? this.displayIndex - 1 : this.urls.length - 1
-        this.displayUrl = this.urls[this.displayIndex]
-        this.renderPicture()
+    // rotateLeft = (num = 1) => {
+    //     this.displayIndex = this.displayIndex - num >= 0 ? this.displayIndex - num : this.urls.length - 1
+    //     this.displayUrl = this.urls[this.displayIndex]
+    //     this.renderPicture()
+    // }
+    //
+    // rotateRight = (num = 1) => {
+    //     this.displayIndex = this.displayIndex + num <= this.urls.length - 1 ? this.displayIndex + num : 0
+    //     this.displayUrl = this.urls[this.displayIndex]
+    //     this.renderPicture()
+    // }
+
+    IMGs = []
+
+    setupIMGS = () => {
+        for (let i = 0; i < urls.length; i++){
+
+            const img = document.createElement('img')
+
+            img.width = 500;
+            img.draggable = false;
+            img.src = 'https://drive.google.com/uc?export=download&id=' + urls[i]
+            img.style.position = 'absolute'
+            img.style.visibility = 'hidden'
+
+            this.IMGs.push(img)
+
+            this.templateSource.append(img)
+        }
     }
 
-    rotateRight = () => {
-        this.displayIndex = this.displayIndex + 1 <= this.urls.length - 1 ? this.displayIndex + 1 : 0
-        this.displayUrl = this.urls[this.displayIndex]
-        this.renderPicture()
-    }
+    notHiddenIndex = 0;
 
-    renderPicture = () => {
-        this.templateSource.src = 'https://drive.google.com/uc?export=download&id=' + this.displayUrl
-    }
+    renderPictureByIndex = (index) => {
 
-    cachedPicks = []
+        this.IMGs[index].style.visibility = 'visible'
 
-    cachePicks = () => {
-        for (const url of this.urls){
-
-            let img = document.createElement('img');
-            img.src = 'https://drive.google.com/uc?export=download&id=' + url;
-
-            this.cachedPicks[url] = img
+        if(index !== this.notHiddenIndex){
+            this.IMGs[this.notHiddenIndex].style.visibility = 'hidden'
+            this.notHiddenIndex = index
         }
 
-        console.log(this.cachedPicks)
+
+    }
+
+    indexEnd = 0;
+
+    controlRender = (num) => {
+
+        let renderIndex;
+        console.log(num)
+
+        if( num <= 0 ){
+            renderIndex = this.indexNow + num >= 0
+                ? this.indexNow + num
+                : this.urls.length + (num % this.urls.length - 1)
+        } else {
+            renderIndex = this.indexNow + num <= this.urls.length - 1
+                ? this.indexNow + num
+                : num % (this.urls.length - 1)
+        }
+
+        console.log(renderIndex, 'index')
+
+        this.renderPictureByIndex(renderIndex)
+
+        this.indexEnd = renderIndex;
+    }
+
+    initialiseTemplateSource = () => {
+        this.templateSource.addEventListener('mousedown', this.startRotate)
+    }
+
+    startedPos;
+    indexNow = 0
+
+    startRotate = (event) => {
+
+        document.addEventListener('mouseup', this.endRotate)
+        this.templateSource.addEventListener('mousemove', this.rotate)
+
+
+        this.startedPos = event.screenX;
+        console.log(this.startedPos)
+    }
+
+    endRotate = (event) => {
+
+        document.removeEventListener('mouseup', this.endRotate)
+        this.templateSource.removeEventListener('mousemove', this.rotate)
+
+        this.indexNow = this.indexEnd
+        console.log('отжал')
+    }
+
+    rotate = (event) => {
+
+        const posX = event.screenX
+        const diff = this.startedPos - posX;
+        const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
+
+        console.log(rotates, 'rotates')
+        this.controlRender(rotates)
+
     }
 }
 const urls = [
@@ -67,7 +152,7 @@ const urls = [
 
 
 
-const elem = document.getElementById('car')
+const elem = document.getElementById('carTemplate')
 
 const rotatingCar = new RotatingCar({
     _urls: urls,
