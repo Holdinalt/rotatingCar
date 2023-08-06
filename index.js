@@ -2,48 +2,23 @@ class RotatingCar{
 
     ROTATE_TO_SWITCH_PX = 7;
 
-    displayUrl = ''
-    displayIndex = 0
     urls = []
     templateSource;
 
     constructor({
         _urls,
-        displayIndexStart = 0,
-        _templateSource,
-
-        leftButton,
-        rightButton
+        _templateSource
     }) {
         this.urls = _urls
-        // this.cachePicks()
+
         this.templateSource = _templateSource;
         this.setupIMGS()
         this.controlRender(0)
 
-        this.displayIndex = displayIndexStart
-        this.displayUrl = _urls[this.displayIndex]
-
         this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / 20)
 
-
         this.initialiseTemplateSource()
-
-        // leftButton.addEventListener('click', this.rotateLeft)
-        // rightButton.addEventListener('click', this.rotateRight)
     }
-
-    // rotateLeft = (num = 1) => {
-    //     this.displayIndex = this.displayIndex - num >= 0 ? this.displayIndex - num : this.urls.length - 1
-    //     this.displayUrl = this.urls[this.displayIndex]
-    //     this.renderPicture()
-    // }
-    //
-    // rotateRight = (num = 1) => {
-    //     this.displayIndex = this.displayIndex + num <= this.urls.length - 1 ? this.displayIndex + num : 0
-    //     this.displayUrl = this.urls[this.displayIndex]
-    //     this.renderPicture()
-    // }
 
     IMGs = []
 
@@ -84,19 +59,19 @@ class RotatingCar{
 
         let renderIndex;
 
-        console.log(this.indexNow, 'now')
+        // console.log(this.indexNow, 'now')
 
         if( num <= 0 ){
             renderIndex = this.indexNow + num >= 0
                 ? this.indexNow + num
                 : (((this.indexNow + num) % this.urls.length) + this.urls.length) % this.urls.length
-            console.log('left')
+            // console.log('left')
         } else {
             renderIndex = (this.indexNow + num) % this.urls.length
-            console.log('right')
+            // console.log('right')
         }
 
-        console.log(renderIndex, 'index')
+        // console.log(renderIndex, 'index')
 
         this.renderPictureByIndex(renderIndex)
 
@@ -105,6 +80,7 @@ class RotatingCar{
 
     initialiseTemplateSource = () => {
         this.templateSource.addEventListener('mousedown', this.startRotate)
+        this.templateSource.addEventListener('touchstart', this.startRotateTouch)
     }
 
     startedPos;
@@ -113,11 +89,13 @@ class RotatingCar{
     startRotate = (event) => {
 
         document.addEventListener('mouseup', this.endRotate)
+
         this.templateSource.addEventListener('mousemove', this.rotate)
 
 
+
         this.startedPos = event.screenX;
-        console.log(this.startedPos)
+        // console.log(this.startedPos)
     }
 
     endRotate = (event) => {
@@ -125,17 +103,33 @@ class RotatingCar{
         document.removeEventListener('mouseup', this.endRotate)
         this.templateSource.removeEventListener('mousemove', this.rotate)
 
+
         this.indexNow = this.indexEnd
-        console.log('отжал')
+        // console.log('отжал')
+    }
+
+    startRotateTouch = (event) => {
+
+        document.addEventListener('touchend', this.endRotateTouch)
+        this.templateSource.addEventListener('touchmove', this.rotate)
+
+        this.startedPos = Math.floor(event.changedTouches[0].clientX);
+    }
+
+    endRotateTouch = (event) => {
+        document.removeEventListener('touchend', this.endRotateTouch)
+        this.templateSource.removeEventListener('touchmove', this.rotate)
+
+        this.indexNow = this.indexEnd
     }
 
     rotate = (event) => {
 
-        const posX = event.screenX
+        const posX = Math.floor(event.changedTouches[0].clientX);
         const diff = this.startedPos - posX;
         const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
 
-        console.log(rotates, 'rotates')
+        // console.log(rotates, 'rotates')
         this.controlRender(rotates)
 
     }
@@ -157,7 +151,5 @@ const elem = document.getElementById('carTemplate')
 
 const rotatingCar = new RotatingCar({
     _urls: urls,
-    _templateSource: elem,
-    rightButton: document.getElementById('right'),
-    leftButton: document.getElementById('left')
+    _templateSource: elem
 })
