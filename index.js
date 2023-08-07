@@ -16,6 +16,7 @@ class RotatingCar{
         this.setupIMGS()
         this.cacheCursors()
         this.controlRender(0)
+        this.setCursor('neutral')
 
         this.ROTATE_TO_SWITCH_PX = Math.floor(Number(this.templateSource.style.width.replace('px', '')) / _rotateSegments)
 
@@ -92,8 +93,6 @@ class RotatingCar{
 
         event.preventDefault()
 
-        this.setCursor('neutral')
-
         document.addEventListener('mouseup', this.endRotate)
 
         this.templateSource.addEventListener('mousemove', this.rotate)
@@ -107,7 +106,7 @@ class RotatingCar{
         document.removeEventListener('mouseup', this.endRotate)
         this.templateSource.removeEventListener('mousemove', this.rotate)
 
-        this.setCursor('default')
+        this.setCursor('neutral')
 
         this.indexNow = this.indexEnd
         // console.log('отжал')
@@ -116,8 +115,6 @@ class RotatingCar{
     startRotateTouch = (event) => {
 
         event.preventDefault()
-
-        this.setCursor('neutral')
 
         document.addEventListener('touchend', this.endRotateTouch)
         this.templateSource.addEventListener('touchmove', e => this.rotate(e, true))
@@ -129,7 +126,7 @@ class RotatingCar{
         document.removeEventListener('touchend', this.endRotateTouch)
         this.templateSource.removeEventListener('touchmove', e => this.rotate(e, true))
 
-        this.setCursor('default')
+        this.setCursor('neutral')
 
         this.indexNow = this.indexEnd
     }
@@ -194,7 +191,7 @@ class RotatingCar{
             case 'default': newCursor = 'auto'; break;
         }
 
-        console.log(type, newCursor)
+        // console.log(type, newCursor)
 
         this.templateSource.style.cursor = newCursor
 
