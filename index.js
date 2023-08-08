@@ -30,9 +30,9 @@ class RotatingCar{
 
             const img = document.createElement('img')
 
-            img.width = 500;
+            img.width = 1064;
             img.draggable = false;
-            img.src = 'https://drive.google.com/uc?export=download&id=' + urls[i]
+            img.src =  urls[i]
             img.style.position = 'absolute'
             img.style.visibility = 'hidden'
 
@@ -181,7 +181,6 @@ class RotatingCar{
     }
 
     setCursor = (type) => {
-
         let newCursor;
 
         switch (type){
@@ -194,18 +193,18 @@ class RotatingCar{
         // console.log(type, newCursor)
 
         this.templateSource.style.cursor = newCursor
-
     }
 }
 const urls = [
-    '1AuLxNG4lqJkK4BX3QVr66K1Sp9gF1f3z',
-    '1rZuUFov76KP_9HpZWtonPgYC_VHPGX7W',
-    '10ORcMjPIKKPhL97LArpo14zZbHGG22yP',
-    '1jQh4DpBq4F2Nl6mAOkbTeD4IeT4XtTOO',
-    '1iurf79bgqsVvhbQfhFBOQ2Ll3LFK9HkR',
-    '1C23pw74QBcBGxg6R29fCX-wjftKt24rD',
-    '1NrIm9zKZXpIKPNtIP85RRGF1-6eVxiXC',
-    '1c3Nn0rKnXnTsSy-yv9waz00GeEQhLTKA',
+    'https://i.ibb.co/42Xf26C/7c412d3b45134718af1fc96f124207ad-1200x0.png'
+    // '1AuLxNG4lqJkK4BX3QVr66K1Sp9gF1f3z',
+    // '1rZuUFov76KP_9HpZWtonPgYC_VHPGX7W',
+    // '10ORcMjPIKKPhL97LArpo14zZbHGG22yP',
+    // '1jQh4DpBq4F2Nl6mAOkbTeD4IeT4XtTOO',
+    // '1iurf79bgqsVvhbQfhFBOQ2Ll3LFK9HkR',
+    // '1C23pw74QBcBGxg6R29fCX-wjftKt24rD',
+    // '1NrIm9zKZXpIKPNtIP85RRGF1-6eVxiXC',
+    // '1c3Nn0rKnXnTsSy-yv9waz00GeEQhLTKA',
 ]
 
 
