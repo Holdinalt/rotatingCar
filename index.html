@@ -15,7 +15,7 @@
 </head>
 
 
-<body style="margin: 100px">
+<body style="margin: 100px; display: flex; flex-direction: column; background-color: darkgray">
 
 
 
@@ -23,5 +23,38 @@
     <div style="width: 1064px; height: 367px" id="carTemplate">
 
     </div>
+
+    <div style="display: flex; flex-direction: row">
+
+        <div class="colorMenu" style="width: 199px; height: 350px;">
+            <div class="colorRound colorRoundLarge"></div>
+        </div>
+
+    </div>
+
+    <style>
+        .colorMenu{
+            border-radius: 13px;
+            background: #F7F7F7;
+            box-sizing: border-box;
+        }
+
+        .colorRound{
+            cursor: pointer;
+            border-radius: 19px;
+        }
+        .colorRoundSmall{
+            width: 29px;
+            height: 29px;
+        }
+        .colorRoundMedium{
+            width: 36px;
+            height: 36px;
+        }
+        .colorRoundLarge{
+            width: 55px;
+            height: 55px;
+        }
+    </style>
 </body>
 </html>
