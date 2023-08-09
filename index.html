@@ -24,10 +24,58 @@
 
     </div>
 
-    <div style="display: flex; flex-direction: row">
+    <div style="display: flex; flex-direction: column; gap: 30px">
 
-        <div class="colorMenu" style="width: 199px; height: 350px;">
-            <div class="colorRound colorRoundLarge"></div>
+        <div class="colorMenu" style="width: 199px; height: 350px; padding: 17px 36px 30px 36px;">
+            <div class="colorMenuText">Белый</div>
+            <div class="colorMenuColors" style="gap: 13px; margin-top: 27px;">
+                <div class="colorRound colorRoundLarge redColorRound colorRoundActive"></div>
+                <div class="colorRound colorRoundLarge whiteColorRound"></div>
+                <div class="colorRound colorRoundLarge silverColorRound"></div>
+                <div class="colorRound colorRoundLarge blackColorRound"></div>
+                <div class="colorRound colorRoundLarge greyColorRound"></div>
+                <div class="colorRound colorRoundLarge blueColorRound"></div>
+                <div class="colorRound colorRoundLarge greenColorRound"></div>
+            </div>
+        </div>
+
+        <div class="colorMenu" style="width: 357px; height: 91px; padding: 10px 20px 17px 20px;">
+            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+            <div class="colorMenuColors" style="margin-top: 13px">
+                <div class="colorRound colorRoundMedium redColorRound colorRoundActive"></div>
+                <div class="colorRound colorRoundMedium whiteColorRound"></div>
+                <div class="colorRound colorRoundMedium silverColorRound"></div>
+                <div class="colorRound colorRoundMedium blackColorRound"></div>
+                <div class="colorRound colorRoundMedium greyColorRound"></div>
+                <div class="colorRound colorRoundMedium blueColorRound"></div>
+                <div class="colorRound colorRoundMedium greenColorRound"></div>
+            </div>
+        </div>
+
+        <div class="colorMenu" style="width: 290px; height: 74px; padding: 8px 17px 14px 17px;">
+            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+            <div class="colorMenuColors" style="margin-top: 9px">
+                <div class="colorRound colorRoundSmall redColorRound colorRoundActive"></div>
+                <div class="colorRound colorRoundSmall whiteColorRound"></div>
+                <div class="colorRound colorRoundSmall silverColorRound"></div>
+                <div class="colorRound colorRoundSmall blackColorRound"></div>
+                <div class="colorRound colorRoundSmall greyColorRound"></div>
+                <div class="colorRound colorRoundSmall blueColorRound"></div>
+                <div class="colorRound colorRoundSmall greenColorRound"></div>
+            </div>
+        </div>
+
+        <div class="colorMenu" style="width: 286px; height: 69px; padding: 6px 14px 11px 14px;">
+            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+            <div class="colorMenuColors" style="margin-top: 9px">
+                <div class="colorRound colorRoundSmall redColorRound colorRoundActive"></div>
+                <div class="colorRound colorRoundSmall whiteColorRound"></div>
+                <div class="colorRound colorRoundSmall silverColorRound"></div>
+                <div class="colorRound colorRoundSmall blackColorRound"></div>
+                <div class="colorRound colorRoundSmall greyColorRound"></div>
+                <div class="colorRound colorRoundSmall blueColorRound"></div>
+                <div class="colorRound colorRoundSmall greenColorRound"></div>
+            </div>
         </div>
 
     </div>
@@ -37,6 +85,27 @@
             border-radius: 13px;
             background: #F7F7F7;
             box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .colorMenuColors{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .colorMenuText{
+            color: #000;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+            width: 128px;
+            height: 17px;
         }
 
         .colorRound{
@@ -55,6 +124,39 @@
             width: 55px;
             height: 55px;
         }
+
+        .redColorRound{
+            background: #A20B05;
+        }
+
+        .whiteColorRound{
+            background: #FFF;
+        }
+
+        .silverColorRound{
+            background: #9C9D9C;
+        }
+
+        .blackColorRound{
+            background: #000;
+        }
+
+        .greyColorRound{
+            background: #585C67;
+        }
+
+        .blueColorRound{
+            background: #B0C8D1;
+        }
+
+        .greenColorRound{
+            background: #558879;
+        }
+
+        .colorRoundActive{
+            border: 4px solid #D6D6D6;
+        }
+
     </style>
 </body>
 </html>
