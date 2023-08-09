@@ -32,7 +32,7 @@ class RotatingCar{
 
             img.width = 1064;
             img.draggable = false;
-            img.src =  urls[i]
+            img.src =  'http://sarkisab.beget.tech/assets/images/electriccars/lil7/white/' + urls[i]
             img.style.position = 'absolute'
             img.style.visibility = 'hidden'
 
@@ -195,17 +195,30 @@ class RotatingCar{
         this.templateSource.style.cursor = newCursor
     }
 }
-const urls = [
-    'https://i.ibb.co/42Xf26C/7c412d3b45134718af1fc96f124207ad-1200x0.png'
-    // '1AuLxNG4lqJkK4BX3QVr66K1Sp9gF1f3z',
-    // '1rZuUFov76KP_9HpZWtonPgYC_VHPGX7W',
-    // '10ORcMjPIKKPhL97LArpo14zZbHGG22yP',
-    // '1jQh4DpBq4F2Nl6mAOkbTeD4IeT4XtTOO',
-    // '1iurf79bgqsVvhbQfhFBOQ2Ll3LFK9HkR',
-    // '1C23pw74QBcBGxg6R29fCX-wjftKt24rD',
-    // '1NrIm9zKZXpIKPNtIP85RRGF1-6eVxiXC',
-    // '1c3Nn0rKnXnTsSy-yv9waz00GeEQhLTKA',
-]
+// const urls = [
+//     '1AuLxNG4lqJkK4BX3QVr66K1Sp9gF1f3z',
+//     '1rZuUFov76KP_9HpZWtonPgYC_VHPGX7W',
+//     '10ORcMjPIKKPhL97LArpo14zZbHGG22yP',
+//     '1jQh4DpBq4F2Nl6mAOkbTeD4IeT4XtTOO',
+//     '1iurf79bgqsVvhbQfhFBOQ2Ll3LFK9HkR',
+//     '1C23pw74QBcBGxg6R29fCX-wjftKt24rD',
+//     '1NrIm9zKZXpIKPNtIP85RRGF1-6eVxiXC',
+//     '1c3Nn0rKnXnTsSy-yv9waz00GeEQhLTKA',
+// ]
+
+const urls = []
+
+for(let i = 1; i <= 35; i++){
+    let str = i.toString()
+
+    console.log(str.length)
+
+    while (str.length < 2){
+        str = '0' + str
+    }
+
+    urls.push(str + '.webp')
+}
 
 
 
@@ -214,5 +227,5 @@ const elem = document.getElementById('carTemplate')
 const rotatingCar = new RotatingCar({
     _urls: urls,
     _templateSource: elem,
-    _rotateSegments: 20
+    _rotateSegments: 72
 })
