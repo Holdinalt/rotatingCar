@@ -20,61 +20,97 @@
 
 
 <!--    <img draggable="false" src="" width="500" id="car" style="width: 500px">-->
-    <div style="width: 1064px; height: 367px" id="carTemplate">
-
-    </div>
+    <div style="width: 1064px; height: 674px" id="carTemplate"></div>
 
     <div style="display: flex; flex-direction: column; gap: 30px">
 
-        <div class="colorMenu" style="width: 199px; height: 350px; padding: 17px 36px 30px 36px;">
-            <div class="colorMenuText">Белый</div>
-            <div class="colorMenuColors" style="gap: 13px; margin-top: 27px;">
-                <div class="colorRound colorRoundLarge redColorRound colorRoundActive"></div>
-                <div class="colorRound colorRoundLarge whiteColorRound"></div>
-                <div class="colorRound colorRoundLarge silverColorRound"></div>
-                <div class="colorRound colorRoundLarge blackColorRound"></div>
-                <div class="colorRound colorRoundLarge greyColorRound"></div>
-                <div class="colorRound colorRoundLarge blueColorRound"></div>
-                <div class="colorRound colorRoundLarge greenColorRound"></div>
+        <div style="display: flex; flex-direction: row; align-items: center">
+            <div style="width: 1064px; height: 674px; margin-right: 23px" id="carTemplate1"></div>
+            <div class="colorMenu" style="width: 199px; height: 350px; padding: 17px 36px 30px 36px;">
+                <div class="colorMenuText">Белый</div>
+                <div class="colorMenuColors" style="gap: 13px; margin-top: 27px;">
+                    <div class="colorRound colorRoundLarge redColorRound " onclick="rotatingCar1.setColor(event, 'red')"></div>
+                    <div class="colorRound colorRoundLarge whiteColorRound colorRoundActive" onclick="rotatingCar1.setColor(event, 'white')"></div>
+                    <div class="colorRound colorRoundLarge silverColorRound" onclick="rotatingCar1.setColor(event, 'silver')"></div>
+                    <div class="colorRound colorRoundLarge blackColorRound" onclick="rotatingCar1.setColor(event, 'black')"></div>
+                    <div class="colorRound colorRoundLarge greyColorRound" onclick="rotatingCar1.setColor(event, 'grey')"></div>
+                    <div class="colorRound colorRoundLarge blueColorRound" onclick="rotatingCar1.setColor(event, 'blue')"></div>
+                    <div class="colorRound colorRoundLarge greenColorRound" onclick="rotatingCar1.setColor(event, 'green')"></div>
+                </div>
             </div>
         </div>
 
-        <div class="colorMenu" style="width: 357px; height: 91px; padding: 10px 20px 17px 20px;">
-            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
-            <div class="colorMenuColors" style="margin-top: 13px">
-                <div class="colorRound colorRoundMedium redColorRound colorRoundActive"></div>
-                <div class="colorRound colorRoundMedium whiteColorRound"></div>
-                <div class="colorRound colorRoundMedium silverColorRound"></div>
-                <div class="colorRound colorRoundMedium blackColorRound"></div>
-                <div class="colorRound colorRoundMedium greyColorRound"></div>
-                <div class="colorRound colorRoundMedium blueColorRound"></div>
-                <div class="colorRound colorRoundMedium greenColorRound"></div>
+        <div style="display: flex; flex-direction: column; width: 640px;">
+            <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 87px; margin-left: 278px">
+                <div style="width: 706px; height: 425px; position: absolute" id="carTemplate2"></div>
+            </div>
+            <div class="colorMenu" style="width: 357px; height: 91px; padding: 10px 20px 17px 20px; margin-left: 19px">
+                <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+                <div class="colorMenuColors" style="margin-top: 13px">
+                    <div class="colorRound colorRoundMedium redColorRound "></div>
+                    <div class="colorRound colorRoundMedium whiteColorRound colorRoundActive"></div>
+                    <div class="colorRound colorRoundMedium silverColorRound"></div>
+                    <div class="colorRound colorRoundMedium blackColorRound"></div>
+                    <div class="colorRound colorRoundMedium greyColorRound"></div>
+                    <div class="colorRound colorRoundMedium blueColorRound"></div>
+                    <div class="colorRound colorRoundMedium greenColorRound"></div>
+                </div>
             </div>
         </div>
 
-        <div class="colorMenu" style="width: 290px; height: 74px; padding: 8px 17px 14px 17px;">
-            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
-            <div class="colorMenuColors" style="margin-top: 9px">
-                <div class="colorRound colorRoundSmall redColorRound colorRoundActive"></div>
-                <div class="colorRound colorRoundSmall whiteColorRound"></div>
-                <div class="colorRound colorRoundSmall silverColorRound"></div>
-                <div class="colorRound colorRoundSmall blackColorRound"></div>
-                <div class="colorRound colorRoundSmall greyColorRound"></div>
-                <div class="colorRound colorRoundSmall blueColorRound"></div>
-                <div class="colorRound colorRoundSmall greenColorRound"></div>
+
+        <div style="display: flex; flex-direction: column; width: 480px;">
+            <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 67px; margin-left: 197px">
+                <div style="width: 555px; height: 334px; position: absolute" id="carTemplate3"></div>
+            </div>
+            <div class="colorMenu" style="width: 290px; height: 74px; padding: 8px 17px 14px 17px; margin-left: 19px">
+                <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+                <div class="colorMenuColors" style="margin-top: 9px">
+                    <div class="colorRound colorRoundSmall redColorRound "></div>
+                    <div class="colorRound colorRoundSmall whiteColorRound colorRoundActive"></div>
+                    <div class="colorRound colorRoundSmall silverColorRound"></div>
+                    <div class="colorRound colorRoundSmall blackColorRound"></div>
+                    <div class="colorRound colorRoundSmall greyColorRound"></div>
+                    <div class="colorRound colorRoundSmall blueColorRound"></div>
+                    <div class="colorRound colorRoundSmall greenColorRound"></div>
+                </div>
             </div>
         </div>
 
-        <div class="colorMenu" style="width: 286px; height: 69px; padding: 6px 14px 11px 14px;">
-            <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
-            <div class="colorMenuColors" style="margin-top: 9px">
-                <div class="colorRound colorRoundSmall redColorRound colorRoundActive"></div>
-                <div class="colorRound colorRoundSmall whiteColorRound"></div>
-                <div class="colorRound colorRoundSmall silverColorRound"></div>
-                <div class="colorRound colorRoundSmall blackColorRound"></div>
-                <div class="colorRound colorRoundSmall greyColorRound"></div>
-                <div class="colorRound colorRoundSmall blueColorRound"></div>
-                <div class="colorRound colorRoundSmall greenColorRound"></div>
+
+        <div>
+            <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 59px; margin-left: 116px">
+                <div style="width: 378px; height: 227px; position: absolute" id="carTemplate4"></div>
+            </div>
+            <div class="colorMenu" style="width: 286px; height: 69px; padding: 6px 14px 11px 14px; margin-left: 17px">
+                <div class="colorMenuText" style="display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;">Белый</div>
+                <div class="colorMenuColors" style="margin-top: 9px">
+                    <div class="colorRound colorRoundSmall redColorRound "></div>
+                    <div class="colorRound colorRoundSmall whiteColorRound colorRoundActive"></div>
+                    <div class="colorRound colorRoundSmall silverColorRound"></div>
+                    <div class="colorRound colorRoundSmall blackColorRound"></div>
+                    <div class="colorRound colorRoundSmall greyColorRound"></div>
+                    <div class="colorRound colorRoundSmall blueColorRound"></div>
+                    <div class="colorRound colorRoundSmall greenColorRound"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: row; align-items: center">
+            <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-right:300px; margin-left: 116px; margin-top: 37px">
+                <div style="width: 816px; height: 491px; position: absolute" id="carTemplate5"></div>
+            </div>
+            <div class="colorMenu" style="width: 199px; height: 350px; padding: 17px 36px 30px 36px;">
+                <div class="colorMenuText">Белый</div>
+                <div class="colorMenuColors" style="gap: 13px; margin-top: 27px;">
+                    <div class="colorRound colorRoundLarge redColorRound " onclick="rotatingCar1.setColor(event, 'red')"></div>
+                    <div class="colorRound colorRoundLarge whiteColorRound colorRoundActive" onclick="rotatingCar1.setColor(event, 'white')"></div>
+                    <div class="colorRound colorRoundLarge silverColorRound" onclick="rotatingCar1.setColor(event, 'silver')"></div>
+                    <div class="colorRound colorRoundLarge blackColorRound" onclick="rotatingCar1.setColor(event, 'black')"></div>
+                    <div class="colorRound colorRoundLarge greyColorRound" onclick="rotatingCar1.setColor(event, 'grey')"></div>
+                    <div class="colorRound colorRoundLarge blueColorRound" onclick="rotatingCar1.setColor(event, 'blue')"></div>
+                    <div class="colorRound colorRoundLarge greenColorRound" onclick="rotatingCar1.setColor(event, 'green')"></div>
+                </div>
             </div>
         </div>
 
@@ -82,6 +118,7 @@
 
     <style>
         .colorMenu{
+            z-index: 1;
             border-radius: 13px;
             background: #F7F7F7;
             box-sizing: border-box;
@@ -99,7 +136,7 @@
 
         .colorMenuText{
             color: #000;
-            font-family: Montserrat;
+            font-family: 'Montserat',Arial,sans-serif;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -109,6 +146,7 @@
         }
 
         .colorRound{
+            box-sizing: border-box;
             cursor: pointer;
             border-radius: 19px;
         }

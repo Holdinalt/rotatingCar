@@ -5,16 +5,24 @@ class RotatingCar{
     cars = []
     color;
     templateSource;
+    colorButtonActive;
+    width;
+    height;
 
     constructor({
         _cars,
         _templateSource,
-        _rotateSegments = 20
+        _rotateSegments = 20,
+        _colorButtonActive,
+        _startColor
     }) {
         this.cars = _cars
-        this.color = Object.keys(this.cars)[0]
+        this.colorButtonActive = _colorButtonActive
+        this.color = _startColor
 
         this.templateSource = _templateSource;
+        this.width = Number(this.templateSource.style.width.replace('px', ''))
+        this.height = Number(this.templateSource.style.height.replace('px', ''))
         this.setupIMGS()
         this.cacheCursors()
         this.controlRender(0)
@@ -28,20 +36,27 @@ class RotatingCar{
     IMGs = []
 
     setupIMGS = () => {
+        this.IMGs = []
         for (let i = 0; i < this.cars[this.color].length; i++){
 
             const img = document.createElement('img')
 
-            img.width = 1064;
+            img.width = this.width;
+            img.height = this.height;
             img.draggable = false;
             img.src = this.cars[this.color][i]
             img.style.position = 'absolute'
             img.style.visibility = 'hidden'
+            img.style.objectFit = 'cover'
 
             this.IMGs.push(img)
 
             this.templateSource.append(img)
         }
+    }
+
+    clearIMGS = () => {
+        this.templateSource.innerHTML = ''
     }
 
     notHiddenIndex = 0;
@@ -99,8 +114,8 @@ class RotatingCar{
 
         this.templateSource.addEventListener('mousemove', this.rotate)
 
-        this.startedPos = event.screenX;
-        // console.log(this.startedPos)
+        this.startedPos = event.clientX;
+        // console.log(event, 'st')
     }
 
     endRotate = (event) => {
@@ -156,6 +171,8 @@ class RotatingCar{
         const diff = this.startedPos - posX;
         const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
 
+        // console.log(diff, rotates, 'xxd')
+
         // console.log(rotates, 'rotates')
         this.controlRender(rotates)
 
@@ -195,6 +212,19 @@ class RotatingCar{
         // console.log(type, newCursor)
 
         this.templateSource.style.cursor = newCursor
+    }
+
+    setColor = (event, color) => {
+        this.color = color
+
+        this.clearIMGS()
+        this.setupIMGS()
+        this.renderPictureByIndex(this.indexEnd)
+
+        this.colorButtonActive.classList.remove('colorRoundActive')
+
+        this.colorButtonActive = event.target
+        this.colorButtonActive.classList.add('colorRoundActive')
     }
 }
 // const urls = [
@@ -260,15 +290,111 @@ const cars = {
         'https://thumb.tildacdn.com/tild3236-3261-4336-a132-666431383065/-/format/webp/34.png',
         'https://thumb.tildacdn.com/tild6239-3362-4533-a666-306166303435/-/format/webp/35.png',
         'https://thumb.tildacdn.com/tild6530-6566-4132-b363-393431643766/-/format/webp/36.png',
+    ],
+    red: [
+        'https://thumb.tildacdn.com/tild3133-6337-4631-a139-386265306331/-/format/webp/01.png',
+        'https://thumb.tildacdn.com/tild3831-3931-4838-a434-343565636263/-/format/webp/02.png',
+        'https://thumb.tildacdn.com/tild6265-6530-4537-a433-323231343064/-/format/webp/03.png',
+        'https://thumb.tildacdn.com/tild3963-6230-4232-a664-333031313238/-/format/webp/04.png',
+        'https://thumb.tildacdn.com/tild3162-6661-4636-b334-333665363363/-/format/webp/05.png',
+        'https://thumb.tildacdn.com/tild6130-3338-4430-b234-386437396663/-/format/webp/06.png',
+        'https://thumb.tildacdn.com/tild6133-3231-4063-b562-663361313134/-/format/webp/07.png',
+        'https://thumb.tildacdn.com/tild3264-6231-4330-b235-356462663036/-/format/webp/08.png',
+        'https://thumb.tildacdn.com/tild6432-3636-4931-a431-363565356165/-/format/webp/09.png',
+        'https://thumb.tildacdn.com/tild3635-6133-4132-a637-383631373066/-/format/webp/10.png',
+        'https://thumb.tildacdn.com/tild3132-6137-4830-a431-393837633633/-/format/webp/11.png',
+        'https://thumb.tildacdn.com/tild6234-3838-4463-b835-336532353631/-/format/webp/12.png',
+        'https://thumb.tildacdn.com/tild6664-3333-4136-b339-323838396338/-/format/webp/13.png',
+        'https://thumb.tildacdn.com/tild3437-6437-4463-b361-356637353362/-/format/webp/14.png',
+        'https://thumb.tildacdn.com/tild3439-3638-4632-b762-343537376631/-/format/webp/15.png',
+        'https://thumb.tildacdn.com/tild3532-6633-4361-b161-663635333538/-/format/webp/16.png',
+        'https://thumb.tildacdn.com/tild3936-6663-4462-a233-386337333337/-/format/webp/17.png',
+        'https://thumb.tildacdn.com/tild3863-3533-4534-a638-346134363366/-/format/webp/18.png',
+        'https://thumb.tildacdn.com/tild3633-6263-4631-a262-626334323731/-/format/webp/19.png',
+        'https://thumb.tildacdn.com/tild6361-6662-4336-a564-383034646535/-/format/webp/20.png',
+        'https://thumb.tildacdn.com/tild3639-3135-4330-b034-653133303334/-/format/webp/21.png',
+        'https://thumb.tildacdn.com/tild3737-6566-4664-b037-393765613262/-/format/webp/22.png',
+        'https://thumb.tildacdn.com/tild3565-6562-4032-a439-313839383237/-/format/webp/23.png',
+        'https://thumb.tildacdn.com/tild3336-6231-4632-b462-633031326464/-/format/webp/24.png',
+        'https://thumb.tildacdn.com/tild6334-6634-4433-b165-363135336164/-/format/webp/25.png',
+        'https://thumb.tildacdn.com/tild6634-6138-4266-b034-396234303665/-/format/webp/26.png',
+        'https://thumb.tildacdn.com/tild3062-3831-4630-b633-343161363162/-/format/webp/27.png',
+        'https://thumb.tildacdn.com/tild6566-3661-4461-b433-643032636564/-/format/webp/28.png',
+        'https://thumb.tildacdn.com/tild6263-6161-4433-b031-356134643730/-/format/webp/29.png',
+        'https://thumb.tildacdn.com/tild6439-3663-4233-a666-666534303864/-/format/webp/30.png',
+        'https://thumb.tildacdn.com/tild6131-3265-4438-a637-386163656138/-/format/webp/31.png',
+        'https://thumb.tildacdn.com/tild3261-6163-4531-a531-626461303430/-/format/webp/32.png',
+        'https://thumb.tildacdn.com/tild3037-6634-4164-b565-313739363239/-/format/webp/33.png',
+        'https://thumb.tildacdn.com/tild3533-6336-4661-b238-306163656461/-/format/webp/34.png',
+        'https://thumb.tildacdn.com/tild6233-3739-4531-b461-303130633465/-/format/webp/35.png',
+        'https://thumb.tildacdn.com/tild6239-3237-4539-a262-663362646435/-/format/webp/36.png',
     ]
 }
 
 
 
-const elem = document.getElementById('carTemplate')
+let elem = document.getElementById('carTemplate')
+let button = document.getElementsByClassName('colorRoundActive')[0]
 
 const rotatingCar = new RotatingCar({
     _cars: cars,
     _templateSource: elem,
-    _rotateSegments: 72
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
+})
+
+elem = document.getElementById('carTemplate1')
+button = document.getElementsByClassName('colorRoundActive')[0]
+
+const rotatingCar1 = new RotatingCar({
+    _cars: cars,
+    _templateSource: elem,
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
+})
+
+elem = document.getElementById('carTemplate2')
+button = document.getElementsByClassName('colorRoundActive')[1]
+
+const rotatingCar2 = new RotatingCar({
+    _cars: cars,
+    _templateSource: elem,
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
+})
+
+elem = document.getElementById('carTemplate3')
+button = document.getElementsByClassName('colorRoundActive')[2]
+
+const rotatingCar3 = new RotatingCar({
+    _cars: cars,
+    _templateSource: elem,
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
+})
+
+elem = document.getElementById('carTemplate4')
+button = document.getElementsByClassName('colorRoundActive')[3]
+
+const rotatingCar4 = new RotatingCar({
+    _cars: cars,
+    _templateSource: elem,
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
+})
+
+elem = document.getElementById('carTemplate5')
+button = document.getElementsByClassName('colorRoundActive')[5]
+
+const rotatingCar5 = new RotatingCar({
+    _cars: cars,
+    _templateSource: elem,
+    _rotateSegments: 72,
+    _colorButtonActive: button,
+    _startColor: 'white'
 })
