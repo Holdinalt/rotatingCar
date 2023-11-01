@@ -1,0 +1,756 @@
+<div class="allWrapper" id="carTemplateWrap1">
+  <div class="carTemplateWrapper">
+    <div class="carTemplate" id="carTemplate1"></div>
+  </div>
+  <div class="colorMenu colorMenuMedia" >
+    <div class="colorMenuText colorMenuTextMedia">Белый</div>
+    <div class="colorMenuColors colorMenuColorsMedia" onchange="rotatingCar1.resizeIT()">
+      <div class="colorRound colorRoundMedia greenColorRound colorRoundActive" onclick="rotatingCar1.setColor(event, 'white')"></div>
+      <div class="colorRound colorRoundMedia greyColorRound " onclick="rotatingCar1.setColor(event, 'Sand')"></div>
+      <div class="colorRound colorRoundMedia GreyBlackColorRound" onclick="rotatingCar1.setColor(event, 'blue')"></div>
+      <div class="colorRound colorRoundMedia blueColorRound" onclick="rotatingCar1.setColor(event, 'Violet')"></div>
+      <div class="colorRound colorRoundMedia blackColorRound" onclick="rotatingCar1.setColor(event, 'black')"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  @media (min-width: 1400px){
+    .allWrapper{
+      display: flex; flex-direction: row; align-items: center; height: 674px;
+    }
+
+    .carTemplateWrapper{
+    }
+
+    .carTemplate{
+      width: 1064px; height: 674px; margin-right: 23px;
+    }
+
+    .colorMenuMedia{
+      width: 199px; height: 350px; padding: 17px 36px 30px 36px; margin-bottom: 60px;
+    }
+
+    .colorMenuTextMedia{
+      width: 128px;
+    }
+
+    .colorMenuColorsMedia{
+      gap: 13px; margin-top: 27px;
+    }
+
+    .CarImg{
+      width: 1064px; height: 674px;
+    }
+
+    .colorRoundMedia{
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+  @media (max-width: 1399px) and (min-width: 960px){
+    .allWrapper{
+      display: flex; flex-direction: row; width: 932px; height: 524px; align-items: center;
+    }
+
+    .carTemplateWrapper{
+      width: 100px; display: flex; justify-content: center; align-items: center; margin-right:317px; margin-left: 116px; margin-top: 37px
+    }
+
+    .carTemplate{
+      width: 786px; height: 523px; position: absolute
+    }
+
+    .colorMenuMedia{
+      width: 199px; height: 350px; padding: 17px 36px 30px 36px; margin-bottom: 25px;
+    }
+
+    .colorMenuTextMedia{
+      width: 128px
+    }
+
+    .colorMenuColorsMedia{
+      gap: 13px; margin-top: 27px;
+    }
+
+    .CarImg{
+      width: 786px; height: 523px;
+    }
+
+    .colorRoundMedia{
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+  @media (max-width: 959px) and (min-width: 640px){
+    .allWrapper{
+      display: flex; flex-direction: column; justify-content: flex-end; width: 640px; height: 441px;
+    }
+
+    .carTemplateWrapper{
+      width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 87px; margin-left: 278px
+    }
+
+    .carTemplate{
+      width: 706px; height: 425px; position: absolute
+    }
+
+    .colorMenuMedia{
+      width: 357px; height: 91px; padding: 10px 20px 17px 20px; margin-left: 19px
+    }
+
+    .colorMenuTextMedia{
+      display: flex; justify-content: center; align-items: center; width: 310px; font-size: 11px;
+    }
+
+    .colorMenuColorsMedia{
+      margin-top: 13px
+    }
+
+    .CarImg{
+      width: 706px; height: 425px;
+    }
+
+    .colorRoundMedia{
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  @media (max-width: 639px) and (min-width: 480px){
+    .allWrapper{
+      display: flex; flex-direction: column; justify-content: flex-end; width: 480px; height: 358px;
+    }
+
+    .carTemplateWrapper{
+      width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 67px; margin-left: 197px
+    }
+
+    .carTemplate{
+      width: 555px; height: 334px; position: absolute
+    }
+
+    .colorMenuMedia{
+      width: 290px; height: 74px; padding: 8px 17px 14px 17px; margin-left: 19px
+    }
+
+    .colorMenuTextMedia{
+      display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;
+    }
+
+    .colorMenuColorsMedia{
+      margin-top: 9px
+    }
+
+    .CarImg{
+      width: 555px; height: 334px;
+    }
+
+    .colorRoundMedia{
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  @media (max-width: 479px){
+    .allWrapper{
+      height: 292px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+
+    .carTemplateWrapper{
+      width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 59px; margin-left: 116px
+    }
+
+    .carTemplate{
+      width: 378px; height: 227px; position: absolute
+    }
+
+    .colorMenuMedia{
+      width: 286px; height: 69px; padding: 6px 14px 11px 14px; margin-left: 17px
+    }
+
+    .colorMenuTextMedia{
+      display: flex; justify-content: center; align-items: center; width: 100%; font-size: 11px;
+    }
+
+    .colorMenuColorsMedia{
+      margin-top: 9px
+    }
+
+    .CarImg{
+      width: 378px; height: 227px;
+    }
+
+    .colorRoundMedia{
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  .colorMenu{
+    z-index: 1;
+    border-radius: 13px;
+    background: #F7F7F7;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .colorMenuColors{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .colorMenuText{
+    color: #000;
+    font-family: 'Montserat',Arial,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    height: 17px;
+  }
+
+  .colorRound{
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 19px;
+  }
+  .colorRoundSmall{
+    width: 29px;
+    height: 29px;
+  }
+  .colorRoundMedium{
+    width: 36px;
+    height: 36px;
+  }
+  .colorRoundLarge{
+    width: 55px;
+    height: 55px;
+  }
+
+  .redColorRound{
+    background: #A20B05;
+  }
+
+  .whiteColorRound{
+    background: #FFF;
+  }
+
+  .silverColorRound{
+    background: #9C9D9C;
+  }
+
+  .blackColorRound{
+    background: #000;
+  }
+
+  .greyColorRound{
+    background: #585C67;
+  }
+
+  .blueColorRound{
+    background: #B0C8D1;
+  }
+
+  .greenColorRound{
+    background: #558879;
+  }
+
+  .orangeColorRound{
+    background: #ff8000;
+  }
+
+  .colorRoundActive{
+    border: 4px solid #D6D6D6;
+  }
+
+</style>
+
+<script defer>
+  const cars = {
+    white: [
+      'https://thumb.tildacdn.com/tild3935-6135-4732-b331-396530303231/-/format/webp/01.png',
+      'https://thumb.tildacdn.com/tild3965-3031-4531-b461-613039353332/-/format/webp/02.png',
+      'https://thumb.tildacdn.com/tild3162-3965-4262-b330-616439343434/-/format/webp/03.png',
+      'https://thumb.tildacdn.com/tild6464-6635-4966-b261-356561303064/-/format/webp/04.png',
+      'https://thumb.tildacdn.com/tild6363-3339-4837-a131-613730336332/-/format/webp/05.png',
+      'https://thumb.tildacdn.com/tild3832-3235-4532-b639-356662333936/-/format/webp/06.png',
+      'https://thumb.tildacdn.com/tild6137-3664-4763-b264-393566663030/-/format/webp/07.png',
+      'https://thumb.tildacdn.com/tild3333-3632-4330-b136-323966366666/-/format/webp/08.png',
+      'https://thumb.tildacdn.com/tild3062-6632-4432-a431-373431386663/-/format/webp/09.png',
+      'https://thumb.tildacdn.com/tild3465-6438-4462-b139-656635393163/-/format/webp/10.png',
+      'https://thumb.tildacdn.com/tild3438-6138-4366-b536-623835346431/-/format/webp/11.png',
+      'https://thumb.tildacdn.com/tild3634-6438-4562-b364-393865306530/-/format/webp/12.png',
+      'https://thumb.tildacdn.com/tild3033-6638-4363-b334-643066373934/-/format/webp/13.png',
+      'https://thumb.tildacdn.com/tild3061-3338-4935-a430-343734306230/-/format/webp/14.png',
+      'https://thumb.tildacdn.com/tild6565-6438-4437-a532-333636356332/-/format/webp/15.png',
+      'https://thumb.tildacdn.com/tild3736-6337-4166-b835-623166666634/-/format/webp/16.png',
+      'https://thumb.tildacdn.com/tild3732-3030-4164-a532-386261623530/-/format/webp/17.png',
+      'https://thumb.tildacdn.com/tild6365-3636-4265-b234-346365353230/-/format/webp/18.png',
+      'https://thumb.tildacdn.com/tild6438-3634-4137-b234-303565663631/-/format/webp/19.png',
+      'https://thumb.tildacdn.com/tild6335-3939-4234-b061-353633663639/-/format/webp/20.png',
+      'https://thumb.tildacdn.com/tild3532-6533-4561-b339-383930306563/-/format/webp/21.png',
+      'https://thumb.tildacdn.com/tild3635-3139-4365-a364-333830616338/-/format/webp/22.png',
+      'https://thumb.tildacdn.com/tild3131-3830-4032-b931-353062373131/-/format/webp/23.png',
+      'https://thumb.tildacdn.com/tild3162-6436-4461-a165-653139356231/-/format/webp/24.png',
+      'https://thumb.tildacdn.com/tild6133-3265-4134-b032-626561393339/-/format/webp/25.png',
+      'https://thumb.tildacdn.com/tild3531-3734-4334-a534-343065666538/-/format/webp/26.png',
+      'https://thumb.tildacdn.com/tild3661-3836-4862-a639-613533343464/-/format/webp/27.png',
+      'https://thumb.tildacdn.com/tild3035-3263-4231-b464-663163326666/-/format/webp/28.png',
+      'https://thumb.tildacdn.com/tild6464-6636-4138-b438-396661326637/-/format/webp/29.png',
+      'https://thumb.tildacdn.com/tild6532-3265-4462-b638-653333333862/-/format/webp/30.png',
+      'https://thumb.tildacdn.com/tild3661-6638-4930-b136-346439666637/-/format/webp/31.png',
+      'https://thumb.tildacdn.com/tild3437-3361-4639-a637-663632353836/-/format/webp/32.png',
+      'https://thumb.tildacdn.com/tild6531-3262-4063-a164-653033653462/-/format/webp/33.png',
+      'https://thumb.tildacdn.com/tild6162-3930-4163-b833-646233613762/-/format/webp/34.png',
+      'https://thumb.tildacdn.com/tild6338-6430-4966-b164-376666316137/-/format/webp/35.png',
+      'https://thumb.tildacdn.com/tild3333-3831-4666-a131-643839666333/-/format/webp/36.png',
+    ],
+    Sand: [
+      'https://thumb.tildacdn.com/tild3132-6536-4438-b462-313439313437/-/format/webp/01.png',
+      'https://thumb.tildacdn.com/tild3737-6334-4365-b139-396266396533/-/format/webp/02.png',
+      'https://thumb.tildacdn.com/tild3665-3736-4130-a363-323665663430/-/format/webp/03.png',
+      'https://thumb.tildacdn.com/tild3735-3664-4831-b866-333061353638/-/format/webp/04.png',
+      'https://thumb.tildacdn.com/tild3139-6634-4463-a463-636261333761/-/format/webp/05.png',
+      'https://thumb.tildacdn.com/tild3663-3563-4263-a166-623361356336/-/format/webp/06.png',
+      'https://thumb.tildacdn.com/tild6261-6632-4635-b732-363166336437/-/format/webp/07.png',
+      'https://thumb.tildacdn.com/tild3066-3764-4937-b432-643732363230/-/format/webp/08.png',
+      'https://thumb.tildacdn.com/tild3966-3166-4264-a134-383531616538/-/format/webp/09.png',
+      'https://thumb.tildacdn.com/tild6635-3765-4533-b632-343930636535/-/format/webp/10.png',
+      'https://thumb.tildacdn.com/tild6438-3662-4966-a165-333831633232/-/format/webp/11.png',
+      'https://thumb.tildacdn.com/tild3266-6334-4761-b339-636135646263/-/format/webp/12.png',
+      'https://thumb.tildacdn.com/tild6239-3965-4162-b130-373365666564/-/format/webp/13.png',
+      'https://thumb.tildacdn.com/tild3361-6132-4634-b532-373839306632/-/format/webp/14.png',
+      'https://thumb.tildacdn.com/tild3765-3632-4466-a337-616435303066/-/format/webp/15.png',
+      'https://thumb.tildacdn.com/tild6236-3730-4037-b836-313830353666/-/format/webp/16.png',
+      'https://thumb.tildacdn.com/tild3339-3938-4437-a131-653564613135/-/format/webp/17.png',
+      'https://thumb.tildacdn.com/tild6531-3932-4739-a531-313330643733/-/format/webp/18.png',
+      'https://thumb.tildacdn.com/tild3030-6232-4431-b736-613934613230/-/format/webp/19.png',
+      'https://thumb.tildacdn.com/tild3864-6438-4239-b936-386336386262/-/format/webp/20.png',
+      'https://thumb.tildacdn.com/tild6132-6465-4132-b539-646563346566/-/format/webp/21.png',
+      'https://thumb.tildacdn.com/tild3634-6138-4365-b862-346662643439/-/format/webp/22.png',
+      'https://thumb.tildacdn.com/tild6331-6438-4639-b437-326131626162/-/format/webp/23.png',
+      'https://thumb.tildacdn.com/tild6465-3537-4830-b135-646263303634/-/format/webp/24.png',
+      'https://thumb.tildacdn.com/tild6630-3364-4535-a164-613531363765/-/format/webp/25.png',
+      'https://thumb.tildacdn.com/tild3635-3532-4566-a565-323138346432/-/format/webp/26.png',
+      'https://thumb.tildacdn.com/tild3663-3735-4035-b232-303935326566/-/format/webp/27.png',
+      'https://thumb.tildacdn.com/tild3964-6233-4163-b064-653634613865/-/format/webp/28.png',
+      'https://thumb.tildacdn.com/tild6261-3139-4837-b663-363033393665/-/format/webp/29.png',
+      'https://thumb.tildacdn.com/tild3630-3566-4130-b439-326366306235/-/format/webp/30.png',
+      'https://thumb.tildacdn.com/tild6639-6434-4262-b437-393838383539/-/format/webp/31.png',
+      'https://thumb.tildacdn.com/tild3630-6338-4565-b738-346663376162/-/format/webp/32.png',
+      'https://thumb.tildacdn.com/tild3565-3266-4838-a164-316264613165/-/format/webp/33.png',
+      'https://thumb.tildacdn.com/tild6366-6330-4238-b566-626561653235/-/format/webp/34.png',
+      'https://thumb.tildacdn.com/tild6133-3737-4539-a330-666265306534/-/format/webp/35.png',
+      'https://thumb.tildacdn.com/tild3634-3930-4036-b936-646338353461/-/format/webp/36.png',
+    ],
+    blue: [
+      'https://thumb.tildacdn.com/tild3439-3633-4462-b037-343936393830/-/format/webp/01.png',
+      'https://thumb.tildacdn.com/tild6637-3862-4161-b236-643333346534/-/format/webp/02.png',
+      'https://thumb.tildacdn.com/tild6265-6566-4961-a163-363931623630/-/format/webp/03.png',
+      'https://thumb.tildacdn.com/tild3439-6635-4466-b437-626234326638/-/format/webp/04.png',
+      'https://thumb.tildacdn.com/tild6638-3463-4164-a165-343665393339/-/format/webp/05.png',
+      'https://thumb.tildacdn.com/tild6537-3566-4038-b761-323765633431/-/format/webp/06.png',
+      'https://thumb.tildacdn.com/tild3333-3164-4864-b762-303138623861/-/format/webp/07.png',
+      'https://thumb.tildacdn.com/tild6231-6333-4833-a234-636166356565/-/format/webp/08.png',
+      'https://thumb.tildacdn.com/tild3534-3065-4466-a336-303031616136/-/format/webp/09.png',
+      'https://thumb.tildacdn.com/tild3536-3131-4336-b233-323166306564/-/format/webp/10.png',
+      'https://thumb.tildacdn.com/tild3461-6133-4532-b234-316331323830/-/format/webp/11.png',
+      'https://thumb.tildacdn.com/tild3464-6234-4664-b763-373664656531/-/format/webp/12.png',
+      'https://thumb.tildacdn.com/tild6434-3030-4734-b836-303163333135/-/format/webp/13.png',
+      'https://thumb.tildacdn.com/tild3837-3230-4261-a465-343232353733/-/format/webp/14.png',
+      'https://thumb.tildacdn.com/tild6233-3532-4034-b732-656636623038/-/format/webp/15.png',
+      'https://thumb.tildacdn.com/tild6162-3365-4261-b762-633134663061/-/format/webp/16.png',
+      'https://thumb.tildacdn.com/tild6630-3937-4139-a465-376336643161/-/format/webp/17.png',
+      'https://thumb.tildacdn.com/tild3465-3031-4363-b935-643830656638/-/format/webp/18.png',
+      'https://thumb.tildacdn.com/tild6539-3931-4133-b566-333435313230/-/format/webp/19.png',
+      'https://thumb.tildacdn.com/tild6336-6563-4532-b262-303363323732/-/format/webp/20.png',
+      'https://thumb.tildacdn.com/tild6130-3337-4466-b234-393762353537/-/format/webp/21.png',
+      'https://thumb.tildacdn.com/tild3831-3531-4630-a261-316661353134/-/format/webp/22.png',
+      'https://thumb.tildacdn.com/tild3239-3966-4337-a232-313934343766/-/format/webp/23.png',
+      'https://thumb.tildacdn.com/tild3439-3437-4261-b732-373136623731/-/format/webp/24.png',
+      'https://thumb.tildacdn.com/tild3761-3361-4231-a139-636237316535/-/format/webp/25.png',
+      'https://thumb.tildacdn.com/tild6239-3434-4566-a437-396630366133/-/format/webp/26.png',
+      'https://thumb.tildacdn.com/tild6632-3131-4531-b939-363232643531/-/format/webp/27.png',
+      'https://thumb.tildacdn.com/tild3261-3561-4262-a264-646663653266/-/format/webp/28.png',
+      'https://thumb.tildacdn.com/tild3463-3033-4666-b731-653534336235/-/format/webp/29.png',
+      'https://thumb.tildacdn.com/tild3236-6166-4534-a437-623266326338/-/format/webp/30.png',
+      'https://thumb.tildacdn.com/tild6137-3666-4436-b636-313734633364/-/format/webp/31.png',
+      'https://thumb.tildacdn.com/tild3338-3831-4239-b235-356334326233/-/format/webp/32.png',
+      'https://thumb.tildacdn.com/tild3761-6161-4531-a238-653064336634/-/format/webp/33.png',
+      'https://thumb.tildacdn.com/tild3233-3665-4531-b733-333962393537/-/format/webp/34.png',
+      'https://thumb.tildacdn.com/tild6239-6361-4436-b664-373339393032/-/format/webp/35.png',
+      'https://thumb.tildacdn.com/tild6266-3635-4530-b030-363466373862/-/format/webp/36.png',
+    ],
+    Violet: [
+      'https://thumb.tildacdn.com/tild3861-3564-4237-b039-656561343834/-/format/webp/01.png',
+      'https://thumb.tildacdn.com/tild3338-6465-4665-a334-393363633939/-/format/webp/02.png',
+      'https://thumb.tildacdn.com/tild6361-6435-4336-b336-373633353332/-/format/webp/03.png',
+      'https://thumb.tildacdn.com/tild3331-3864-4430-a337-373430383832/-/format/webp/04.png',
+      'https://thumb.tildacdn.com/tild3039-3735-4234-b764-303536383630/-/format/webp/05.png',
+      'https://thumb.tildacdn.com/tild6631-6362-4362-b463-656463313033/-/format/webp/06.png',
+      'https://thumb.tildacdn.com/tild3733-3065-4037-b839-653733636562/-/format/webp/07.png',
+      'https://thumb.tildacdn.com/tild6333-3666-4431-b932-333335613635/-/format/webp/08.png',
+      'https://thumb.tildacdn.com/tild3035-3237-4033-a537-343661613439/-/format/webp/09.png',
+      'https://thumb.tildacdn.com/tild6430-3439-4439-a335-653039303931/-/format/webp/10.png',
+      'https://thumb.tildacdn.com/tild6662-6661-4666-b435-356563336638/-/format/webp/11.png',
+      'https://thumb.tildacdn.com/tild6637-3738-4133-a561-366334656165/-/format/webp/12.png',
+      'https://thumb.tildacdn.com/tild3835-6564-4538-b238-653961393861/-/format/webp/13.png',
+      'https://thumb.tildacdn.com/tild3739-3832-4630-b866-353732393965/-/format/webp/14.png',
+      'https://thumb.tildacdn.com/tild3766-6363-4634-b461-333064393232/-/format/webp/15.png',
+      'https://thumb.tildacdn.com/tild6465-6533-4364-a437-623134366136/-/format/webp/16.png',
+      'https://thumb.tildacdn.com/tild3237-3563-4862-a132-626530393539/-/format/webp/17.png',
+      'https://thumb.tildacdn.com/tild3338-6166-4063-a334-656266383437/-/format/webp/18.png',
+      'https://thumb.tildacdn.com/tild3736-3931-4530-b739-383864643537/-/format/webp/19.png',
+      'https://thumb.tildacdn.com/tild6132-6537-4164-a130-313531346333/-/format/webp/20.png',
+      'https://thumb.tildacdn.com/tild6436-3733-4634-b430-376535643564/-/format/webp/21.png',
+      'https://thumb.tildacdn.com/tild3331-3762-4365-b261-383865626237/-/format/webp/22.png',
+      'https://thumb.tildacdn.com/tild3934-6563-4531-b335-623863313462/-/format/webp/23.png',
+      'https://thumb.tildacdn.com/tild6335-6534-4738-a133-323231366166/-/format/webp/24.png',
+      'https://thumb.tildacdn.com/tild6536-3062-4835-a636-653135626266/-/format/webp/25.png',
+      'https://thumb.tildacdn.com/tild3334-3661-4133-b962-393832343835/-/format/webp/26.png',
+      'https://thumb.tildacdn.com/tild3032-3533-4239-a430-383334373066/-/format/webp/27.png',
+      'https://thumb.tildacdn.com/tild6335-3763-4262-b239-636262633933/-/format/webp/28.png',
+      'https://thumb.tildacdn.com/tild3034-6531-4538-b263-396335633432/-/format/webp/29.png',
+      'https://thumb.tildacdn.com/tild6231-3839-4034-b631-663163336136/-/format/webp/30.png',
+      'https://thumb.tildacdn.com/tild3136-6537-4839-a330-336463653466/-/format/webp/31.png',
+      'https://thumb.tildacdn.com/tild3165-3330-4230-b762-316330653535/-/format/webp/32.png',
+      'https://thumb.tildacdn.com/tild6365-3031-4962-a666-616164386537/-/format/webp/33.png',
+      'https://thumb.tildacdn.com/tild6566-6438-4735-b430-323735363530/-/format/webp/34.png',
+      'https://thumb.tildacdn.com/tild6561-3630-4230-b761-343362363266/-/format/webp/35.png',
+      'https://thumb.tildacdn.com/tild3538-3632-4735-b033-663937626265/-/format/webp/36.png',
+    ],
+    black: [
+      'https://thumb.tildacdn.com/tild6564-3035-4663-a363-373231323166/-/format/webp/01.png',
+      'https://thumb.tildacdn.com/tild6334-3138-4032-a338-343839343335/-/format/webp/02.png',
+      'https://thumb.tildacdn.com/tild6166-6530-4664-a465-336162336535/-/format/webp/03.png',
+      'https://thumb.tildacdn.com/tild3164-6633-4233-a662-386333316432/-/format/webp/04.png',
+      'https://thumb.tildacdn.com/tild6436-3036-4834-a638-383732353035/-/format/webp/05.png',
+      'https://thumb.tildacdn.com/tild6634-6139-4130-b432-306462313733/-/format/webp/06.png',
+      'https://thumb.tildacdn.com/tild6137-3866-4435-a462-353139343066/-/format/webp/07.png',
+      'https://thumb.tildacdn.com/tild3839-3761-4963-b162-363835633261/-/format/webp/08.png',
+      'https://thumb.tildacdn.com/tild6566-3639-4764-b331-663439376263/-/format/webp/09.png',
+      'https://thumb.tildacdn.com/tild3232-6435-4132-b866-356332303237/-/format/webp/10.png',
+      'https://thumb.tildacdn.com/tild6363-3835-4230-a334-626637326639/-/format/webp/11.png',
+      'https://thumb.tildacdn.com/tild3830-6137-4162-b835-666361346431/-/format/webp/12.png',
+      'https://thumb.tildacdn.com/tild3637-6663-4264-b033-316138343938/-/format/webp/13.png',
+      'https://thumb.tildacdn.com/tild6465-3964-4234-a138-393362326661/-/format/webp/14.png',
+      'https://thumb.tildacdn.com/tild3036-6634-4434-a138-393135313861/-/format/webp/15.png',
+      'https://thumb.tildacdn.com/tild3833-6634-4231-b562-323335653162/-/format/webp/16.png',
+      'https://thumb.tildacdn.com/tild6131-3339-4136-a237-653563616662/-/format/webp/17.png',
+      'https://thumb.tildacdn.com/tild3434-3235-4136-a262-363433316665/-/format/webp/18.png',
+      'https://thumb.tildacdn.com/tild6162-3530-4233-a262-363330376332/-/format/webp/19.png',
+      'https://thumb.tildacdn.com/tild6633-3034-4432-a634-343337663039/-/format/webp/20.png',
+      'https://thumb.tildacdn.com/tild3039-3737-4330-b736-643636393561/-/format/webp/21.png',
+      'https://thumb.tildacdn.com/tild6638-3361-4238-a639-313034363236/-/format/webp/22.png',
+      'https://thumb.tildacdn.com/tild3936-3936-4265-b035-663563356561/-/format/webp/23.png',
+      'https://thumb.tildacdn.com/tild6531-3864-4435-b632-383631313566/-/format/webp/24.png',
+      'https://thumb.tildacdn.com/tild3834-3933-4132-b838-376362646435/-/format/webp/25.png',
+      'https://thumb.tildacdn.com/tild3137-6236-4463-b563-306638303164/-/format/webp/26.png',
+      'https://thumb.tildacdn.com/tild3039-3361-4262-b065-393530323331/-/format/webp/27.png',
+      'https://thumb.tildacdn.com/tild3461-3935-4866-b964-303665373939/-/format/webp/28.png',
+      'https://thumb.tildacdn.com/tild3735-3838-4665-a561-643665383663/-/format/webp/29.png',
+      'https://thumb.tildacdn.com/tild3035-6133-4563-b663-393032353639/-/format/webp/30.png',
+      'https://thumb.tildacdn.com/tild6337-6233-4239-b336-653761393633/-/format/webp/31.png',
+      'https://thumb.tildacdn.com/tild3330-6234-4430-a266-333065336337/-/format/webp/32.png',
+      'https://thumb.tildacdn.com/tild3262-3739-4930-b631-363831323236/-/format/webp/33.png',
+      'https://thumb.tildacdn.com/tild3035-6130-4230-b862-626630623437/-/format/webp/34.png',
+      'https://thumb.tildacdn.com/tild3465-3332-4336-b538-653339306637/-/format/webp/35.png',
+      'https://thumb.tildacdn.com/tild3461-6566-4965-a465-663164646335/-/format/webp/36.png',
+    ],
+  }
+
+  const texts = {
+    white: 'Белый',
+    Sand: 'Песочный',
+    blue: 'Синий',
+    Violet: 'Фиолетовый',
+    black: 'Чёрный',
+  }
+
+  class RotatingCar{
+
+    ROTATE_TO_SWITCH_PX;
+    ROTATE_SEGMENTS
+
+    cars = []
+    color;
+    templateSource;
+    colorButtonActive;
+    colorText;
+    texts;
+    width;
+    height;
+
+    constructor({
+                  _cars,
+                  _templateSource,
+                  _rotateSegments = 20,
+                  _colorButtonActive,
+                  _startColor,
+                  _colorText,
+                  _texts,
+                }) {
+      this.cars = _cars
+      this.colorButtonActive = _colorButtonActive
+      this.color = _startColor
+      this.colorText = _colorText
+      this.texts = _texts;
+      this.templateSource = _templateSource;
+      this.ROTATE_SEGMENTS = _rotateSegments
+
+      this.width = Number(this.templateSource.offsetWidth)
+      this.height = Number(this.templateSource.offsetHeight)
+      console.log(this.color)
+      this.setupIMGS()
+      this.cacheCursors()
+      this.controlRender(0)
+      this.setCursor('neutral')
+
+      this.ROTATE_TO_SWITCH_PX = Math.floor(this.width / this.ROTATE_SEGMENTS)
+
+      this.initialiseTemplateSource()
+    }
+
+    IMGs = []
+
+    setupIMGS = () => {
+      this.IMGs = []
+      for (let i = 0; i < this.cars[this.color].length; i++){
+
+        const img = document.createElement('img')
+
+        // img.width = this.width;
+        // img.height = this.height;
+        img.draggable = false;
+        img.src = this.cars[this.color][i]
+        img.style.position = 'absolute'
+        img.style.visibility = 'hidden'
+        img.style.objectFit = 'cover'
+        img.classList.add('CarImg')
+
+        this.IMGs.push(img)
+
+        this.templateSource.append(img)
+      }
+    }
+
+    clearIMGS = () => {
+      this.templateSource.innerHTML = ''
+    }
+
+    notHiddenIndex = 0;
+
+    renderPictureByIndex = (index) => {
+      this.IMGs[index].style.visibility = 'visible'
+
+      if(index !== this.notHiddenIndex){
+        this.IMGs[this.notHiddenIndex].style.visibility = 'hidden'
+        this.notHiddenIndex = index
+      }
+    }
+
+    indexEnd = 0;
+    prevX;
+
+    controlRender = (num) => {
+
+      let renderIndex;
+
+      // console.log(this.indexNow, 'now')
+
+      if( num <= 0 ){
+
+        renderIndex = this.indexNow + num >= 0
+                ? this.indexNow + num
+                : (((this.indexNow + num) % this.cars[this.color].length) + this.cars[this.color].length) % this.cars[this.color].length
+        // console.log('left')
+      } else {
+
+        renderIndex = (this.indexNow + num) % this.cars[this.color].length
+        // console.log('right')
+      }
+
+      // console.log(renderIndex, 'index')
+
+      this.renderPictureByIndex(renderIndex)
+
+      this.indexEnd = renderIndex;
+    }
+
+    initialiseTemplateSource = () => {
+      this.templateSource.addEventListener('mousedown', this.startRotate)
+      this.templateSource.addEventListener('touchstart', this.startRotateTouch)
+    }
+
+    startedPos;
+    indexNow = 0
+
+    startRotate = (event) => {
+
+      event.preventDefault()
+
+      this.resizeIT()
+
+      document.addEventListener('mouseup', this.endRotate)
+
+      this.templateSource.addEventListener('mousemove', this.rotate)
+
+      this.startedPos = event.clientX;
+      // console.log(event, 'st')
+    }
+
+    endRotate = (event) => {
+
+      document.removeEventListener('mouseup', this.endRotate)
+      this.templateSource.removeEventListener('mousemove', this.rotate)
+
+      this.setCursor('neutral')
+
+      this.indexNow = this.indexEnd
+      // console.log('отжал')
+    }
+
+    startRotateTouch = (event) => {
+
+      event.preventDefault()
+
+      this.resizeIT()
+
+      document.addEventListener('touchend', this.endRotateTouch)
+      this.templateSource.addEventListener('touchmove', e => this.rotate(e, true))
+
+      this.startedPos = Math.floor(event.changedTouches[0].clientX);
+    }
+
+    endRotateTouch = (event) => {
+      document.removeEventListener('touchend', this.endRotateTouch)
+      this.templateSource.removeEventListener('touchmove', e => this.rotate(e, true))
+
+      this.setCursor('neutral')
+
+      this.indexNow = this.indexEnd
+    }
+
+    rotate = (event, touch = false) => {
+
+      let posX
+
+      if(!touch){
+        posX = event.clientX;
+      } else {
+        posX = Math.floor(event.changedTouches[0].clientX);
+      }
+
+      if(this.prevX > posX){
+        this.setCursor('left')
+      }
+
+      if(this.prevX < posX) {
+        this.setCursor('right')
+      }
+
+      this.prevX = posX
+
+      const diff = this.startedPos - posX;
+      const rotates = Math.floor(diff / this.ROTATE_TO_SWITCH_PX)
+
+      // console.log(diff, rotates, 'xxd')
+
+      // console.log(rotates, 'rotates')
+      this.controlRender(rotates)
+
+    }
+
+    cursors = {
+      right: 'https://thumb.tildacdn.com/tild6536-3962-4230-a532-666463623561/-/format/webp/_.png',
+      left: 'https://thumb.tildacdn.com/tild3233-3864-4033-b039-393736336337/-/format/webp/_.png',
+      neutral: 'https://thumb.tildacdn.com/tild3737-3563-4137-b436-363237613036/-/format/webp/_.png'
+    }
+
+    cacheCursors = () => {
+      for (const curs in this.cursors){
+
+        const img = document.createElement('img')
+
+        img.width = 0;
+        img.draggable = false;
+        img.src = this.cursors[curs]
+        img.style.position = 'absolute'
+        img.style.visibility = 'hidden'
+
+        this.templateSource.append(img)
+      }
+    }
+
+    setCursor = (type) => {
+      let newCursor;
+
+      switch (type){
+        case 'right': newCursor = `url("${this.cursors.right}"), auto`; break;
+        case 'left': newCursor = `url("${this.cursors.left}"), auto`; break;
+        case 'neutral': newCursor = `url("${this.cursors.neutral}"), auto`; break;
+        case 'default': newCursor = 'auto'; break;
+      }
+
+      // console.log(type, newCursor)
+
+      this.templateSource.style.cursor = newCursor
+    }
+
+    setColor = (event, color) => {
+      this.color = color
+
+      this.clearIMGS()
+      this.setupIMGS()
+      this.renderPictureByIndex(this.indexEnd)
+
+      this.colorButtonActive.classList.remove('colorRoundActive')
+
+      this.colorButtonActive = event.target
+      this.colorButtonActive.classList.add('colorRoundActive')
+
+      this.setColorName(color)
+    }
+
+    setColorName = (color) => {
+      this.colorText.innerHTML = this.texts[color]
+    }
+
+    resizeIT = () => {
+
+      if( this.width === Number(this.templateSource.offsetWidth) ) return
+
+      this.width = Number(this.templateSource.offsetWidth)
+      this.height = Number(this.templateSource.offsetHeight)
+
+      this.ROTATE_TO_SWITCH_PX = Math.floor(this.width / this.ROTATE_SEGMENTS)
+    }
+  }
+
+  let rotatingCar1;
+
+  const elem1 = document.getElementById('carTemplate1')
+  const button1 = document.querySelector('[id="carTemplateWrap1"] [class*="colorRoundActive"]')
+  const textField1 = document.querySelector('[id="carTemplateWrap1"] [class*="colorMenuText"]')
+
+  if(elem1){
+    rotatingCar1 = new RotatingCar({
+      _cars: cars, // Не трогать
+      _templateSource: elem1, // Не трогать
+      _rotateSegments: 72,  // Кол-во сегментов, можно не трогать
+      _colorButtonActive: button1, // Не трогать
+      _startColor: 'white', // Название цвета, с которого начнется показ тачек по дефолту
+      _texts: texts, // Не трогать
+      _colorText: textField1 // Не трогать
+    })
+  }
+
+</script>

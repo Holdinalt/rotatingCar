@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+
+
+
+  <div class="characteristics-table">
+    <p style="margin: 20px 0; font-size: 20px">Характеристики</p>
+    <table style="width: 100%; border-spacing: 0">
+      <tbody class="table-body">
+      <tr style="background-color: #9C9D9C">
+        <th>Lixiang L8</th>
+        <th>Air</th>
+        <th>Pro</th>
+        <th>Max</th>
+      </tr>
+      <tr>
+        <th>Тип кузова:</th>
+        <th>Кроссовер (6 мест)</th>
+        <th>Кроссовер (6 мест)</th>
+        <th>Кроссовер (6 мест)</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Запас хода WLTC / CLTC на чистом электричестве</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th style="">Вспомогательная вычислительная мощность чипа (TOPS)</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      <tr>
+        <th>Время разгона 0—100 км/ч</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+        <th>5,5 сек.</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+<style>
+  .characteristics-table{
+    --table-height: 605px;
+
+
+    --columns: 1000;
+    --table-width: 100%;
+    width: 100%;
+
+    font-family: 'Montserat',Arial,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    border-collapse: collapse;
+
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+  }
+
+  .characteristics-table tr{
+    width: 100%
+  }
+
+  .characteristics-table th{
+    align-items: center;
+    padding: 0 5px;
+    font-weight: 300;
+    text-align: left;
+  }
+
+  th:first-child{
+    padding-left: 20px;
+  }
+
+  .table-body{
+    overflow: auto;
+    height: var(--table-height);
+    width: var(--table-width);
+    display: block;
+  }
+
+  .table-body tr{
+    height: 67px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .table-body th{
+    border-bottom: 1px solid #ddd;
+    width: calc(var(--table-width) / var(--columns));
+  }
+
+  .table-body tr:last-child th{
+    border-bottom: none;
+  }
+</style>
+
+</body>
+</html>
+
