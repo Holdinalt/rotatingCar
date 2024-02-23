@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js" defer></script>
+</head>
+
+
+<body style="margin: 300px; display: flex; flex-direction: column; background-color: darkgray">
+
+
+
+<!--    <img draggable="false" src="" width="500" id="car" style="width: 500px">-->
+<div style="width: 1064px; height: 674px" id="carTemplate"></div>
+
+<div style="display: flex; flex-direction: column; gap: 30px">
+
+    <div class="allWrapper" id="carTemplateWrap1">
+        <div class="carTemplateWrapper">
+            <div class="carTemplate" id="carTemplate1"></div>
+        </div>
+        <div class="colorMenu colorMenuMedia" >
+            <div class="colorMenuColors colorMenuColorsMedia" onchange="rotatingCar1.resizeIT()">
+                <div class="colorRound colorRoundMedia redColorRound" onclick="rotatingCar1.setColor(event, 'red')"></div>
+                <div class="colorRound colorRoundMedia whiteColorRound colorRoundActive" onclick="rotatingCar1.setColor(event, 'white')"></div>
+                <div class="colorRound colorRoundMedia silverColorRound" onclick="rotatingCar1.setColor(event, 'silver')"></div>
+                <div class="colorRound colorRoundMedia blackColorRound" onclick="rotatingCar1.setColor(event, 'black')"></div>
+                <div class="colorRound colorRoundMedia greyColorRound" onclick="rotatingCar1.setColor(event, 'grey')"></div>
+                <div class="colorRound colorRoundMedia blueColorRound" onclick="rotatingCar1.setColor(event, 'blue')"></div>
+                <div class="colorRound colorRoundMedia greenColorRound" onclick="rotatingCar1.setColor(event, 'green')"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .redColorRound{
+        background: #A20B05;
+    }
+
+    .whiteColorRound{
+        background: #FFF;
+    }
+
+    .silverColorRound{
+        background: #9C9D9C;
+    }
+
+    .blackColorRound{
+        background: #000;
+    }
+
+    .greyColorRound{
+        background: #585C67;
+    }
+
+    .blueColorRound{
+        background: #B0C8D1;
+    }
+
+    .greenColorRound{
+        background: #558879;
+    }
+
+    .allWrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .carTemplate{
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .CarImg{
+        object-position: top;
+        width: 100%;
+    }
+
+    .colorMenuColors{
+        width: 100%;
+    }
+
+    @media (min-width: 1200px) {
+
+        .allWrapper{
+            width: 777px;
+        }
+
+        .carTemplate{
+            width: 777px;
+            height: 447px;
+        }
+
+        .CarImg{
+            width: 777px;
+            height: 447px;
+        }
+
+        .colorRoundMedia{
+            width: 52px;
+            height: 52px;
+        }
+
+        .colorMenuColors{
+            justify-content: flex-start;
+            margin-left: 50px;
+        }
+    }
+
+    @media (max-width: 1199px) and (min-width: 960px){
+
+        .allWrapper{
+            width: 641px;
+        }
+
+        .carTemplate{
+            height: 371px;
+        }
+
+        .CarImg{
+            width: 641px;
+            height: 375px;
+        }
+
+        .colorRoundMedia{
+            width: 43px;
+            height: 43px;
+        }
+
+        .colorMenuColors{
+            justify-content: flex-start;
+            margin-left: 50px;
+        }
+    }
+
+    @media (max-width: 959px) and (min-width: 640px){
+
+        .allWrapper{
+            width: 707px;
+        }
+
+        .carTemplate{
+            height: 387px;
+        }
+
+        .CarImg{
+            width: 707px;
+            height: 387px;
+        }
+
+        .colorRoundMedia{
+            width: 42px;
+            height: 42px;
+        }
+
+        .colorMenuColors{
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 639px) and (min-width: 480px){
+
+        .allWrapper{
+            width: 519px;
+        }
+
+        .carTemplate{
+            height: 310px;
+        }
+
+        .CarImg{
+            width: 519px;
+            height: 310px;
+        }
+
+        .colorRoundMedia{
+            width: 36px;
+            height: 36px;
+        }
+
+        .colorMenuColors{
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 479px){
+
+        .allWrapper{
+            width: 360px;
+        }
+
+        .carTemplate{
+            height: 200px;
+        }
+
+        .CarImg{
+            width: 360px;
+            height: 204px;
+        }
+
+        .colorRoundMedia{
+            width: 21px;
+            height: 21px;
+        }
+
+        .colorMenuColors{
+            justify-content: center;
+        }
+    }
+
+    .colorMenu{
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .colorMenuColors{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .colorMenuText{
+        color: #000;
+        font-family: 'Montserat',Arial,sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+        height: 17px;
+    }
+
+    .colorRound{
+        box-sizing: border-box;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+
+    .colorRoundActive{
+        border: 3px solid #D6D6D6;
+    }
+
+</style>
+</body>
+</html>

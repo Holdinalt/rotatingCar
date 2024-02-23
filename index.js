@@ -522,7 +522,7 @@ class RotatingCar{
     }
 
     setColorName = (color) => {
-        this.colorText.innerHTML = this.texts[color]
+        if(this.texts && this.colorText) this.colorText.innerHTML = this.texts[color]
     }
 
     resizeIT = () => {
